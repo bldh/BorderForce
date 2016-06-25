@@ -9,23 +9,29 @@ public class BoatController : MonoBehaviour {
 	public float integrity;
 	public float vel, time;
 	public GameObject goHome;
+	public GameObject refugee;
 	public Vector3 startRot;
 
 	private float timeSpawnedAt;
 
 	// Use this for initialization
 	void Start () {
-		vel = 0.1f;
+		goHome = GameObject.Find ("Home");
+		vel = -0.5f;
 		resolve = 50;
 		turnback = false;
 		time = 0f;
 		timeSpawnedAt = Time.timeSinceLevelLoad;
+		integrity = 5;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (Time.timeSinceLevelLoad - timeSpawnedAt > integrity) {
-			//Destroy (this.gameObject);
+			print (Time.timeSinceLevelLoad);
+			Vector3 spawnPoint = this.transform.position;
+			GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+			Destroy (this.gameObject);
 		}
 
 		if (Input.GetMouseButton(0)) {

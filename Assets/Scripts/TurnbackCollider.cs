@@ -17,6 +17,7 @@ public class TurnbackCollider : MonoBehaviour {
 	{
 		Debug.Log ("Trigger Enter");
 		if (c.gameObject.name == "IEV"){
+			print ("Now Influenced");
 			c.SendMessage("Influenced", true);
 		}
 	}
