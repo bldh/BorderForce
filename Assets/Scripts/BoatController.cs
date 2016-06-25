@@ -18,6 +18,10 @@ public class BoatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (resolve <= 0) {
+			vel = 0.01f;
+		}
+
 		this.transform.position+= new Vector3(0f,vel, 0f);
 	}
 
