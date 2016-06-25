@@ -85,6 +85,7 @@ MonoBehaviour:
   vel: -0.1
   time: 0
   goHome: {fileID: 0}
+  refugee: {fileID: 105540, guid: ac659f7d3ec6f4899b066391ba1f0a6d, type: 2}
   startRot: {x: 0, y: 0, z: 0}
 --- !u!212 &21276338
 SpriteRenderer:
