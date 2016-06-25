@@ -25,4 +25,9 @@ public class BoatController : MonoBehaviour {
 	{
 		vel = val;
 	}
+
+	void Reverse(float val)
+	{
+		vel = val;
+	}
 }

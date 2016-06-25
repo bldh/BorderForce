@@ -20,6 +20,11 @@ public class PlayerController : MonoBehaviour {
 			{
 				this.transform.parent.BroadcastMessage("FUCKOFFWEREFULL", 0.03f);
 			}
-		cone.transform.rota
+	}
+
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.gameObject.name == "IEV")
+			c.SendMessage("Reverse", 0.01f);
 	}
 }
