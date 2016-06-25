@@ -3,10 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	public GameObject cone;
-	Rigidbody2D rig;
 	// Use this for initialization
 	void Start () {
-		rig = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -18,27 +16,18 @@ public class PlayerController : MonoBehaviour {
 		diff.Normalize();
 		float rot_z = Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg;
 
-		if (Input.GetKey (KeyCode.W)){
-			transform.position = Vector2.MoveTowards (this.transform.position, Camera.main.ScreenToWorldPoint (Input.mousePosition), 1f * Time.deltaTime);
-			transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90); 
-		}
-		cone.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
-
-		transform.position = new Vector3 (Mathf.Clamp(this.transform.position.x,-9f,9f), Mathf.Clamp(this.transform.position.y,-4f,-0.5f),0);
-
-		if(Input.GetButtonUp("Fire1"))
-			{
-				this.transform.parent.BroadcastMessage("FUCKOFFWEREFULL", 0.03f);
+		if (!Input.GetMouseButton(0)) {
+			if (Input.GetKey (KeyCode.W)){
+				transform.position = Vector2.MoveTowards (this.transform.position, Camera.main.ScreenToWorldPoint (Input.mousePosition), 1f * Time.deltaTime);
+				transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90); 
 			}
-<<<<<<< HEAD
-	}
+			cone.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);
 
-	void OnTriggerEnter2D(Collider2D c)
-	{
-		if (c.gameObject.name == "IEV")
-			c.SendMessage("Reverse", 0.01f);
-=======
-			
->>>>>>> 92cc2f405476797903f3162192aaf531aed40e28
+			transform.position = new Vector3 (Mathf.Clamp (this.transform.position.x, -9f, 9f), Mathf.Clamp (this.transform.position.y, -4f, -0.5f), 0);
+		}
+		if(Input.GetButtonDown("Fire1"))
+			{
+				this.transform.parent.BroadcastMessage("Reverse", true);
+			}
 	}
 }
