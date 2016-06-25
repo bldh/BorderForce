@@ -22,7 +22,6 @@ public class BoatController : MonoBehaviour {
 		turnback = false;
 		time = 0f;
 		timeSpawnedAt = Time.timeSinceLevelLoad;
-		integrity = 5;
 	}
 	
 	// Update is called once per frame
@@ -50,7 +49,7 @@ public class BoatController : MonoBehaviour {
 			diff.Normalize ();
 			float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
 
-			Vector3 currentRot = Vector3.Lerp(startRot, new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, rot_z-90),time);
+			Vector3 currentRot = Vector3.Lerp(startRot, new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, rot_z+90),time);
 			time += Mathf.Clamp (Time.deltaTime * .5f, 0, 1);
 			transform.rotation = Quaternion.Euler(currentRot); 
 

@@ -6,9 +6,8 @@ public class LevelController : MonoBehaviour {
 	public GameObject boat;
 
 	public float timeBetweenSpawnTries;
-	public int spawnChance;
-	public int maxBoatLevel;
-	public float boatIntegrityModifier;
+	public int spawnChance, spawnType, maxBoatLevel;
+	public float boatIntegrityModifierInit;
 	System.Random rand = new System.Random(); 
 
 	private float lastSpawn;
@@ -27,13 +26,16 @@ public class LevelController : MonoBehaviour {
 		print ("Trying Spawn");
 		int spawn = rand.Next (0, 100);
 		if (spawn < spawnChance) {
-			int spawnType = rand.Next (0, maxBoatLevel);
+			spawnType = rand.Next (0, maxBoatLevel);
+			float integrity = rand.Next (-10, 10);
+			float boatIntegrityModifier = boatIntegrityModifierInit + integrity;
 			switch (spawnType) {
 			case 0:
 				GameObject g = Instantiate (boat, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
 				g.transform.name = "IEV";
 				g.transform.SetParent (this.transform);
 				g.GetComponent<BoatController>().setPassengers(5);
+				g.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Raft Boat
 				break;
 			case 1:
@@ -41,6 +43,7 @@ public class LevelController : MonoBehaviour {
 				d.transform.name = "IEV";
 				d.transform.SetParent (this.transform);
 				d.GetComponent<BoatController>().setPassengers(5);
+				d.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Wreck Boat
 				break;
 			case 2:
@@ -48,6 +51,7 @@ public class LevelController : MonoBehaviour {
 				t.transform.name = "IEV";
 				t.transform.SetParent (this.transform);
 				t.GetComponent<BoatController>().setPassengers(5);
+				t.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Less Wreck Boat
 				break;
 			case 3:
@@ -55,6 +59,7 @@ public class LevelController : MonoBehaviour {
 				y.transform.name = "IEV";
 				y.transform.SetParent (this.transform);
 				y.GetComponent<BoatController>().setPassengers(5);
+				y.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Fishing Boat
 				break;
 			case 4:
@@ -62,6 +67,7 @@ public class LevelController : MonoBehaviour {
 				u.transform.name = "IEV";
 				u.transform.SetParent (this.transform);
 				u.GetComponent<BoatController>().setPassengers(5);
+				u.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Speed Boat
 				break;
 			}
