@@ -15,7 +15,7 @@ public class ShoreController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.gameObject.name == "Illegal Entry Vehicle")
+		if (c.gameObject.name == "IEV")
 			Destroy(c.gameObject);
 	}
 }
