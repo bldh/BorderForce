@@ -11,8 +11,9 @@ GameObject:
   - 212: {fileID: 21237230}
   - 60: {fileID: 6080326}
   - 50: {fileID: 5078842}
+  - 114: {fileID: 11456730}
   m_Layer: 0
-  m_Name: wideboat 1
+  m_Name: jet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,10 +25,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 144414}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: -0.00000016292068}
+  m_LocalRotation: {x: -0.00000016292068, y: -1, z: -0.00000016292068, w: 2.654315e-14}
   m_LocalPosition: {x: -2.3899999, y: 2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,6 +66,23 @@ PolygonCollider2D:
     - - {x: -0.43301272, y: -0.24999994}
       - {x: 0.43301272, y: -0.25000003}
       - {x: 0, y: 0.5}
+--- !u!114 &11456730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8fc5dbc3d2464032844594f947f7932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 10c977ce1bc4744839b151f3a9583604, type: 3}
+  - {fileID: 21300000, guid: 40522bf25bd0749259c76f7c9a1e4161, type: 3}
+  - {fileID: 21300000, guid: 39094be8a7db5477e91a8eb3fc294933, type: 3}
+  timer: 0
+  initTime: 0
 --- !u!212 &21237230
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,10 +109,10 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ed07653ed7f404788b038a8eb037a449, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10c977ce1bc4744839b151f3a9583604, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
