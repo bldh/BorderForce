@@ -11,6 +11,7 @@ public class BoatController : MonoBehaviour {
 	public GameObject goHome;
 	public GameObject refugee;
 	public Vector3 startRot;
+	System.Random rand;
 
 	private float timeSpawnedAt;
 

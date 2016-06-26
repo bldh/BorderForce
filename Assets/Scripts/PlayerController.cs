@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-	public GameObject cone;
+	public GameObject cone, gameManager;
+	public float borderForceCountdown;
 	// Use this for initialization
 	void Start () {
+		borderForceCountdown = 5;
+		gameManager = GameObject.Find ("Manager");
 	}
 	
 	// Update is called once per frame
@@ -23,9 +26,20 @@ public class PlayerController : MonoBehaviour {
 
 			transform.position = new Vector3 (Mathf.Clamp (this.transform.position.x, -9f, 9f), Mathf.Clamp (this.transform.position.y, -4f, -0.5f), 0);
 		}
-		if(Input.GetButtonDown("Fire1"))
-			{
-				this.transform.parent.BroadcastMessage("Reverse", true);
+		if(Input.GetButtonDown("Fire1")) {
+			if (borderForceCountdown <= 0) {
+				this.transform.parent.BroadcastMessage ("Reverse", true);
+				borderForceCountdown = 1000f / gameManager.GetComponent<Manager> ().opinion;
 			}
+		}
+		borderForceCountdown -= Time.deltaTime;
+	}
+
+	void OnTriggerEnter2D(Collider2D c)
+	{
+		if (c.gameObject.name == "Person") {
+			c.SendMessage("Rescued");
+		}
+
 	}
 }

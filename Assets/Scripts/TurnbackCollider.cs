@@ -15,7 +15,7 @@ public class TurnbackCollider : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		Debug.Log ("Trigger Enter");
+		//Debug.Log ("Trigger Enter");
 		if (c.gameObject.name == "IEV"){
 			print ("Now Influenced");
 			c.SendMessage("Influenced", true);
@@ -24,7 +24,7 @@ public class TurnbackCollider : MonoBehaviour {
 
 	void OnTriggerExit2D(Collider2D c)
 	{
-		Debug.Log ("Trigger Enter");
+		//Debug.Log ("Trigger Enter");
 		if (c.gameObject.name == "IEV"){
 			c.SendMessage("Influenced", false);
 		}

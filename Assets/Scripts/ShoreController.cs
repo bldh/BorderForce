@@ -18,8 +18,14 @@ public class ShoreController : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D c)
 	{
 		if (c.gameObject.name == "IEV") {
-			gameManager.GetComponent<Manager> ().incrArrivals (c.gameObject.GetComponent<BoatController> ().passengers);
-			Destroy (c.gameObject);
+			if (this.gameObject.name == "Shore") {
+				gameManager.GetComponent<Manager> ().incrArrivals (c.gameObject.GetComponent<BoatController> ().passengers);
+				Destroy (c.gameObject);
+			}
+			if (this.gameObject.name == "Origin") {
+				gameManager.GetComponent<Manager> ().incrReturns (c.gameObject.GetComponent<BoatController> ().passengers);
+				Destroy (c.gameObject);
+			}
 		}
 
 	}

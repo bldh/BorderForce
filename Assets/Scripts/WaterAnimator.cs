@@ -24,7 +24,5 @@ public class WaterAnimator : MonoBehaviour {
 			timer = initTime;
 		}
 		this.GetComponent<SpriteRenderer> ().sprite = sprites [spritecount];
-			
-
 	}
 }

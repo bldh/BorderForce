@@ -7,8 +7,9 @@ public class Manager : MonoBehaviour {
 	public int otherDrownings= 0;
 
 	public int detainees= 0;
-
+	public int returns = 0;
 	public int arrivals= 0; 
+	public float opinion = 50;
 
 	private int maxInDetention = 10;
 	private int maxDrownings = 10;
@@ -20,7 +21,7 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		opinion = 50;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +40,7 @@ public class Manager : MonoBehaviour {
 	public void incrDrowned(int num)
 	{
 		drownings += num;
+		opinion--;
 	}
 
 	public void incrDetention(int num)
@@ -49,5 +51,12 @@ public class Manager : MonoBehaviour {
 	public void incrArrivals(int num)
 	{
 		arrivals += num;
+		opinion--;
+	}	
+
+	public void incrReturns(int num)
+	{
+		returns += num;
+		opinion = opinion + 2;
 	}
 }
