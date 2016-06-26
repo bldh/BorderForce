@@ -14,6 +14,7 @@ public class BoatController : MonoBehaviour {
 	System.Random rand = new System.Random();
 	public Sprite[] sprites;
 	public int spriteCount;
+	public AudioClip breaking;
 
 	private float timeSpawnedAt;
 
@@ -34,6 +35,7 @@ public class BoatController : MonoBehaviour {
 			print (Time.timeSinceLevelLoad);
 			Vector3 spawnPoint = this.transform.position;
 			GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+			AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
 			Destroy (this.gameObject);
 		}
 

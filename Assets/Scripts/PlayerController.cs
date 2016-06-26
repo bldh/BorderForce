@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject cone, gameManager, borderForce;
 	public float borderForceCountdown;
 	public bool sendBorderForce;
+	public AudioClip borderForceSFX;
 	// Use this for initialization
 	void Start () {
 		borderForceCountdown = 5;
@@ -37,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 		if (sendBorderForce) {
 			GameObject b = Instantiate (borderForce, new Vector2 (0, -5), Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
 			sendBorderForce = false;
+			AudioSource.PlayClipAtPoint (borderForceSFX, Camera.main.transform.position);
 		}
 		borderForceCountdown -= Time.deltaTime;
 	

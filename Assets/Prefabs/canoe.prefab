@@ -92,6 +92,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1486adefd82a463b81038254e2abc0a, type: 3}
   - {fileID: 21300000, guid: 5978cfaef19c74ea1adec52f922f0837, type: 3}
   spriteCount: 0
+  breaking: {fileID: 8300000, guid: 4e934a97d624940ef885cb48455a8ec4, type: 3}
 --- !u!212 &21276338
 SpriteRenderer:
   m_ObjectHideFlags: 1
