@@ -34,7 +34,7 @@ public class BoatController : MonoBehaviour {
 		if (integrity <= 0) {
 			print (Time.timeSinceLevelLoad);
 			Vector3 spawnPoint = this.transform.position;
-			GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+			Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
 			AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
 			Destroy (this.gameObject);
 		}
