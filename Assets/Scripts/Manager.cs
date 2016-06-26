@@ -57,6 +57,6 @@ public class Manager : MonoBehaviour {
 	public void incrReturns(int num)
 	{
 		returns += num;
-		opinion = opinion + 2;
+		opinion = opinion++;
 	}
 }

@@ -11,7 +11,9 @@ public class BoatController : MonoBehaviour {
 	public GameObject goHome;
 	public GameObject refugee;
 	public Vector3 startRot;
-	System.Random rand;
+	System.Random rand = new System.Random();
+	public Sprite[] sprites;
+	public int spriteCount;
 
 	private float timeSpawnedAt;
 
@@ -27,7 +29,8 @@ public class BoatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.timeSinceLevelLoad - timeSpawnedAt > integrity) {
+		integrity -= Time.deltaTime;
+		if (integrity <= 0) {
 			print (Time.timeSinceLevelLoad);
 			Vector3 spawnPoint = this.transform.position;
 			GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
@@ -43,6 +46,7 @@ public class BoatController : MonoBehaviour {
 		if (resolve == 0) {
 			turnback = true;
 			startRot = this.transform.rotation.eulerAngles;
+			integrity += rand.Next (5, 15);
 		}
 
 		if (turnback) {
@@ -57,12 +61,26 @@ public class BoatController : MonoBehaviour {
 		
 		}
 		this.GetComponent<Rigidbody2D>().velocity = (Vector2)transform.TransformDirection(Vector3.up) * vel;
+		drawBoatDamage ();	
+	}
+
+	void drawBoatDamage() {
+		if (integrity >= 20f) {
+			this.GetComponent<SpriteRenderer> ().sprite = sprites [0];			
+		}
+		else if (integrity >= 10f) {
+			this.GetComponent<SpriteRenderer> ().sprite = sprites [1];	
+		}
+		else if (integrity >= 0f) {
+			this.GetComponent<SpriteRenderer> ().sprite = sprites [2];	
+		}
 	}
 
 	void Reverse(bool value)
 	{
 		turnback = value;
 		startRot = this.transform.rotation.eulerAngles;
+
 	}
 
 	void Influenced(bool influence)

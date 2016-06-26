@@ -39,7 +39,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 493324}
   m_Layer: 0
-  m_Name: Group
+  m_Name: Group_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09e6815fcdc4205b54680f31537f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescued: {fileID: 21300000, guid: 8fd96373b238d4d7e887d79bbe1077f7, type: 3}
+  sprites: []
+  rescueSprite: {fileID: 0}
+  timeUntilDrown: 0
+  rescued: 0
+  timer: 0
+  initTime: 0
 --- !u!114 &11436100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,7 +327,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09e6815fcdc4205b54680f31537f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescued: {fileID: 21300000, guid: 8fd96373b238d4d7e887d79bbe1077f7, type: 3}
+  sprites: []
+  rescueSprite: {fileID: 0}
+  timeUntilDrown: 0
+  rescued: 0
+  timer: 0
+  initTime: 0
 --- !u!114 &11457908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -334,7 +344,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09e6815fcdc4205b54680f31537f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescued: {fileID: 21300000, guid: 8fd96373b238d4d7e887d79bbe1077f7, type: 3}
+  sprites: []
+  rescueSprite: {fileID: 0}
+  timeUntilDrown: 0
+  rescued: 0
+  timer: 0
+  initTime: 0
 --- !u!114 &11477624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09e6815fcdc4205b54680f31537f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescued: {fileID: 21300000, guid: 8fd96373b238d4d7e887d79bbe1077f7, type: 3}
+  sprites: []
+  rescueSprite: {fileID: 0}
+  timeUntilDrown: 0
+  rescued: 0
+  timer: 0
+  initTime: 0
 --- !u!114 &11480262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a09e6815fcdc4205b54680f31537f8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rescued: {fileID: 21300000, guid: 8fd96373b238d4d7e887d79bbe1077f7, type: 3}
+  sprites: []
+  rescueSprite: {fileID: 0}
+  timeUntilDrown: 0
+  rescued: 0
+  timer: 0
+  initTime: 0
 --- !u!212 &21207324
 SpriteRenderer:
   m_ObjectHideFlags: 1

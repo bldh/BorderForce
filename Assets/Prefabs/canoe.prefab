@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11403366}
   - 50: {fileID: 5075952}
   m_Layer: 0
-  m_Name: IEV 1
+  m_Name: canoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 157296}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: -0.00000016292068}
   m_LocalPosition: {x: -2.3899999, y: 2.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -85,8 +85,13 @@ MonoBehaviour:
   vel: -0.1
   time: 0
   goHome: {fileID: 0}
-  refugee: {fileID: 105540, guid: ac659f7d3ec6f4899b066391ba1f0a6d, type: 2}
+  refugee: {fileID: 146432, guid: b26f36509fb554a61b7d70c84dc51293, type: 2}
   startRot: {x: 0, y: 0, z: 0}
+  sprites:
+  - {fileID: 21300000, guid: 9c798ef95afd9415ebd9844efbcd43fe, type: 3}
+  - {fileID: 21300000, guid: a1486adefd82a463b81038254e2abc0a, type: 3}
+  - {fileID: 21300000, guid: 5978cfaef19c74ea1adec52f922f0837, type: 3}
+  spriteCount: 0
 --- !u!212 &21276338
 SpriteRenderer:
   m_ObjectHideFlags: 1
