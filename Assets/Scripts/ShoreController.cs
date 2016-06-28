@@ -7,7 +7,7 @@ public class ShoreController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameManager = GameObject.FindGameObjectWithTag ("GameController");
+		gameManager = GameObject.Find("Manager");
 	}
 
 	// Update is called once per frame

@@ -5,7 +5,7 @@ using System;
 public class LevelController : MonoBehaviour {
 	public GameObject boat1,boat2,boat3,boat4,boat5;
 
-	public float timeBetweenSpawnTries;
+	public float timeBetweenSpawnAttempts;
 	public int spawnChance, spawnType, maxBoatLevel;
 	public float boatIntegrityModifierInit;
 	System.Random rand = new System.Random(); 
@@ -18,9 +18,11 @@ public class LevelController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Time.timeSinceLevelLoad - lastSpawn > timeBetweenSpawnTries)
+		if (Time.timeSinceLevelLoad - lastSpawn > timeBetweenSpawnAttempts) {
 			TrySpawn ();
+		}
 	}
+
 	void TrySpawn()
 	{
 		print ("Trying Spawn");
@@ -29,9 +31,10 @@ public class LevelController : MonoBehaviour {
 			spawnType = rand.Next (0, maxBoatLevel);
 			float integrity = rand.Next (-10, 10);
 			float boatIntegrityModifier = boatIntegrityModifierInit + integrity;
+			float angleModifier = rand.Next (-15, 15);
 			switch (spawnType) {
 			case 0:
-				GameObject g = Instantiate (boat1, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+				GameObject g = Instantiate (boat1, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
 				g.transform.name = "IEV";
 				g.transform.SetParent (this.transform);
 				g.GetComponent<BoatController>().setPassengers(5);
@@ -39,7 +42,7 @@ public class LevelController : MonoBehaviour {
 				//Raft Boat
 				break;
 			case 1:
-				GameObject d = Instantiate (boat2, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
+				GameObject d = Instantiate (boat2, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
 				d.transform.name = "IEV";
 				d.transform.SetParent (this.transform);
 				d.GetComponent<BoatController>().setPassengers(5);
@@ -47,7 +50,7 @@ public class LevelController : MonoBehaviour {
 				//Wreck Boat
 				break;
 			case 2:
-				GameObject t = Instantiate (boat3, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
+				GameObject t = Instantiate (boat3, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
 				t.transform.name = "IEV";
 				t.transform.SetParent (this.transform);
 				t.GetComponent<BoatController>().setPassengers(5);
@@ -55,7 +58,7 @@ public class LevelController : MonoBehaviour {
 				//Less Wreck Boat
 				break;
 			case 3:
-				GameObject y = Instantiate (boat4, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0))) as GameObject;
+				GameObject y = Instantiate (boat4, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
 				y.transform.name = "IEV";
 				y.transform.SetParent (this.transform);
 				y.GetComponent<BoatController>().setPassengers(5);
@@ -63,7 +66,7 @@ public class LevelController : MonoBehaviour {
 				//Fishing Boat
 				break;
 			case 4:
-				GameObject u = Instantiate (boat5, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+				GameObject u = Instantiate (boat5, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
 				u.transform.name = "IEV";
 				u.transform.SetParent (this.transform);
 				u.GetComponent<BoatController>().setPassengers(5);

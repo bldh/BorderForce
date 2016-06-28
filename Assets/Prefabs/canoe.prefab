@@ -86,6 +86,7 @@ MonoBehaviour:
   time: 0
   goHome: {fileID: 0}
   refugee: {fileID: 146432, guid: b26f36509fb554a61b7d70c84dc51293, type: 2}
+  person: {fileID: 161720, guid: 45e62143eee7c40bf8db8db062b5a769, type: 2}
   startRot: {x: 0, y: 0, z: 0}
   sprites:
   - {fileID: 21300000, guid: 9c798ef95afd9415ebd9844efbcd43fe, type: 3}

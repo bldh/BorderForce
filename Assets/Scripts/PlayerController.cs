@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D c)
 	{
-		if (c.gameObject.name == "Person") {
+		if (c.gameObject.name == "Refugee") {
 			c.SendMessage("Rescued");
 		}
 

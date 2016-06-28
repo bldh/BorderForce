@@ -9,7 +9,7 @@ public class BoatController : MonoBehaviour {
 	public float integrity;
 	public float vel, time;
 	public GameObject goHome;
-	public GameObject refugee;
+	public GameObject refugee, person;
 	public Vector3 startRot;
 	System.Random rand = new System.Random();
 	public Sprite[] sprites;
@@ -32,11 +32,7 @@ public class BoatController : MonoBehaviour {
 	void Update () {
 		integrity -= Time.deltaTime;
 		if (integrity <= 0) {
-			print (Time.timeSinceLevelLoad);
-			Vector3 spawnPoint = this.transform.position;
-			Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
-			AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
-			Destroy (this.gameObject);
+			sinkBoat2 ();
 		}
 
 		if (Input.GetMouseButton(0)) {
@@ -66,6 +62,27 @@ public class BoatController : MonoBehaviour {
 		drawBoatDamage ();	
 	}
 
+	void sinkBoat(){
+		//print (Time.timeSinceLevelLoad);
+		Vector3 spawnPoint = this.transform.position;
+		GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+		AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
+		Destroy (this.gameObject);
+	}
+
+	void sinkBoat2(){
+		//print (Time.timeSinceLevelLoad);
+		Vector3 spawnPoint = this.transform.position;
+		for (int i = 0; i < passengers; i++){
+			Debug.Log ("Person Created");
+			Vector3 spawnOffset = new Vector3 (UnityEngine.Random.Range(-1.0f, 1.0f), UnityEngine.Random.Range (-1.0f, 1.0f), 0);
+			GameObject newRefugee = Instantiate (person, spawnPoint + spawnOffset, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
+			newRefugee.transform.name = "Refugee";
+		}
+		AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
+		Destroy (this.gameObject);
+	}
+		
 	void drawBoatDamage() {
 		if (integrity >= 20f) {
 			this.GetComponent<SpriteRenderer> ().sprite = sprites [0];			

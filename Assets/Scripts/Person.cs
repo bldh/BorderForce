@@ -26,12 +26,12 @@ public class Person : MonoBehaviour {
 		timeUntilDrown -= Time.deltaTime;
 		if (timeUntilDrown <= 0) {
 			if (rescued) {
-				gameManager.GetComponent<Manager> ().detainees++;
+				gameManager.GetComponent<Manager> ().incrArrivals(1);
 			} else {
 				if (this.transform.position.y >= 0) {
-					gameManager.GetComponent<Manager> ().otherDrownings++;
+					gameManager.GetComponent<Manager> ().incrOtherDrowned(1);
 				} else {
-					gameManager.GetComponent<Manager> ().drownings++;
+					gameManager.GetComponent<Manager> ().incrDrowned (1);
 				}
 			}	
 			Destroy (this.gameObject);
