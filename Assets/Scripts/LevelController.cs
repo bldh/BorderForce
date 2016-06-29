@@ -4,6 +4,7 @@ using System;
 
 public class LevelController : MonoBehaviour {
 	public GameObject boat1,boat2,boat3,boat4,boat5;
+	public GameObject[] boat;
 
 	public float timeBetweenSpawnAttempts;
 	public int spawnChance, spawnType, maxBoatLevel;
@@ -32,48 +33,14 @@ public class LevelController : MonoBehaviour {
 			float integrity = rand.Next (-10, 10);
 			float boatIntegrityModifier = boatIntegrityModifierInit + integrity;
 			float angleModifier = rand.Next (-15, 15);
-			switch (spawnType) {
-			case 0:
-				GameObject g = Instantiate (boat1, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
+			int pax = rand.Next (2, 8);
+				GameObject g = Instantiate (boat[spawnType], new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
 				g.transform.name = "IEV";
 				g.transform.SetParent (this.transform);
-				g.GetComponent<BoatController>().setPassengers(5);
+				g.GetComponent<BoatController>().setPassengers(pax);
 				g.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 				//Raft Boat
-				break;
-			case 1:
-				GameObject d = Instantiate (boat2, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
-				d.transform.name = "IEV";
-				d.transform.SetParent (this.transform);
-				d.GetComponent<BoatController>().setPassengers(5);
-				d.GetComponent<BoatController>().integrity = boatIntegrityModifier;
-				//Wreck Boat
-				break;
-			case 2:
-				GameObject t = Instantiate (boat3, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
-				t.transform.name = "IEV";
-				t.transform.SetParent (this.transform);
-				t.GetComponent<BoatController>().setPassengers(5);
-				t.GetComponent<BoatController>().integrity = boatIntegrityModifier;
-				//Less Wreck Boat
-				break;
-			case 3:
-				GameObject y = Instantiate (boat4, new Vector2(rand.Next (-9, 9),4), Quaternion.Euler(new Vector3(0,0,0 + angleModifier))) as GameObject;
-				y.transform.name = "IEV";
-				y.transform.SetParent (this.transform);
-				y.GetComponent<BoatController>().setPassengers(5);
-				y.GetComponent<BoatController>().integrity = boatIntegrityModifier;
-				//Fishing Boat
-				break;
-			case 4:
-				GameObject u = Instantiate (boat5, new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
-				u.transform.name = "IEV";
-				u.transform.SetParent (this.transform);
-				u.GetComponent<BoatController>().setPassengers(5);
-				u.GetComponent<BoatController>().integrity = boatIntegrityModifier;
-				//Speed Boat
-				break;
-			}
+
 			lastSpawn = Time.timeSinceLevelLoad;
 		}	
 	}
