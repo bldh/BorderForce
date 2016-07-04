@@ -31,6 +31,6 @@ public class levelManager : MonoBehaviour {
 
 	public void LoadLevel (string level) {
 		Debug.Log ("Load" + level);
-		Application.LoadLevel (level);
+		SceneManager.LoadScene (level);
 	}
 }

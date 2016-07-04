@@ -569,7 +569,10 @@ MonoBehaviour:
   - {fileID: 157296, guid: a32dccf4cd32e41dd9ba4a406f2bc466, type: 2}
   - {fileID: 111880, guid: 90ebb61fbbe4d4521935849f7b9575a1, type: 2}
   - {fileID: 146550, guid: 1fce400989c3044fcbe731aff2f8a234, type: 2}
-  timeBetweenSpawnAttempts: 4
+  timeBetweenSpawnAttempts: 2
+  mB: 0
+  fAB: 0
+  bPB: 0
   spawnChance: 50
   spawnType: 0
   maxBoatLevel: 2
@@ -1063,6 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
+  sliders: {fileID: 0}
 --- !u!1 &1221021771
 GameObject:
   m_ObjectHideFlags: 0

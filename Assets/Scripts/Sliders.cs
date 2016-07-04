@@ -5,35 +5,36 @@ using UnityEngine.UI;
 public class Sliders : MonoBehaviour {
 
 	public GameObject militaryBudget, foreignAidBudget, borderPatrolBudget;
-	public float mB, fAB, bPB, mBold, fABold, bPBold, temp, temp2; 
+	public float mB, fAB, bPB, temp; 
 
 	// Use this for initialization
 	void Start () {
 		militaryBudget = GameObject.Find ("Military");
 		foreignAidBudget = GameObject.Find ("Foreign Aid");
 		borderPatrolBudget = GameObject.Find ("Border Patrol");
+//		mB = 0.33f;
+//		fAB = 0.33f;
+//		bPB = 0.33f;
 	}
-	
-	// Update is called once per frame
+
+	void Awake (){
+
+	}
+
 	void Update () {
-		mBold = mB;
+
 		mB = militaryBudget.GetComponent<Slider> ().value;
-		if (mB != mBold) {
-			Debug.Log ("militaryBudgetChanged");
-			temp = 1 - mB;
-			temp2 = fAB / bPB;
-			fAB = fAB - temp / temp2;	
-		}
-		fABold = fAB;
 		fAB = foreignAidBudget.GetComponent<Slider> ().value;
-		if (fAB != fABold) {
-			Debug.Log ("foreignAidBudgetChanged");		
-		}
-		bPBold = bPB;
 		bPB = borderPatrolBudget.GetComponent<Slider> ().value;
-		if (bPB != bPBold) {
-			Debug.Log ("borderPatrolBudgetChanged");
-		}
+
+		temp = mB + fAB + bPB;
+		mB = mB / temp;
+		fAB = fAB / temp;
+		bPB = bPB / temp;
+
+		militaryBudget.GetComponent<Slider> ().value = mB;
+		foreignAidBudget.GetComponent<Slider> ().value = fAB;
+		borderPatrolBudget.GetComponent<Slider> ().value = bPB;
 	}
 
 	public void SaveData (){
@@ -41,4 +42,12 @@ public class Sliders : MonoBehaviour {
 		PlayerPrefs.SetFloat ("foreignAidBudget", fAB);
 		PlayerPrefs.SetFloat ("borderPatrol", bPB);
 	}
+
+	public void LoadData () {
+		militaryBudget.GetComponent<Slider> ().value = PlayerPrefs.GetFloat ("militaryBudget");
+		foreignAidBudget.GetComponent<Slider> ().value = PlayerPrefs.GetFloat ("foreignAidBudget");
+		borderPatrolBudget.GetComponent<Slider> ().value = PlayerPrefs.GetFloat ("borderPatrolBudget");
+	}
+
 }
+
