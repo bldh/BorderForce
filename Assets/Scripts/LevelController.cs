@@ -34,13 +34,11 @@ public class LevelController : MonoBehaviour {
 			float boatIntegrityModifier = boatIntegrityModifierInit + integrity;
 			float angleModifier = rand.Next (-15, 15);
 			int pax = rand.Next (2, 8);
-				GameObject g = Instantiate (boat[spawnType], new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
-				g.transform.name = "IEV";
-				g.transform.SetParent (this.transform);
-				g.GetComponent<BoatController>().setPassengers(pax);
-				g.GetComponent<BoatController>().integrity = boatIntegrityModifier;
-				//Raft Boat
-
+			GameObject g = Instantiate (boat[spawnType], new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
+			g.transform.name = "IEV";
+			g.transform.SetParent (this.transform);
+			g.GetComponent<BoatController>().setPassengers(pax);
+			g.GetComponent<BoatController>().integrity = boatIntegrityModifier;
 			lastSpawn = Time.timeSinceLevelLoad;
 		}	
 	}
