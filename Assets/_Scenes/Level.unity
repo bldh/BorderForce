@@ -143,7 +143,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &178891283
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +531,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1 &554068205
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,24 +555,16 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 554068205}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c2a81008cb8e4c1fa63d2125563a057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boat1: {fileID: 157296, guid: a32dccf4cd32e41dd9ba4a406f2bc466, type: 2}
-  boat2: {fileID: 111880, guid: 90ebb61fbbe4d4521935849f7b9575a1, type: 2}
-  boat3: {fileID: 146550, guid: 1fce400989c3044fcbe731aff2f8a234, type: 2}
-  boat4: {fileID: 111880, guid: 90ebb61fbbe4d4521935849f7b9575a1, type: 2}
-  boat5: {fileID: 146550, guid: 1fce400989c3044fcbe731aff2f8a234, type: 2}
   boat:
   - {fileID: 157296, guid: a32dccf4cd32e41dd9ba4a406f2bc466, type: 2}
   - {fileID: 111880, guid: 90ebb61fbbe4d4521935849f7b9575a1, type: 2}
   - {fileID: 146550, guid: 1fce400989c3044fcbe731aff2f8a234, type: 2}
   timeBetweenSpawnAttempts: 2
-  mB: 0
-  fAB: 0
-  bPB: 0
   spawnChance: 50
   spawnType: 0
   maxBoatLevel: 2
@@ -588,10 +580,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1075810263}
   - {fileID: 2045568634}
   - {fileID: 718569592}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!82 &554068208
 AudioSource:
   m_ObjectHideFlags: 0
@@ -817,7 +810,7 @@ Transform:
   - {fileID: 1221021772}
   - {fileID: 227964504}
   m_Father: {fileID: 554068207}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &718569593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -922,7 +915,7 @@ RectTransform:
   - {fileID: 1223127797}
   - {fileID: 1570590817}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -965,6 +958,15 @@ MonoBehaviour:
   currentLevel: 0
   opinion: 0
   levelTimer: 60
+  paxModifier: 0
+  boat:
+  - {fileID: 146550, guid: 1fce400989c3044fcbe731aff2f8a234, type: 2}
+  - {fileID: 157296, guid: a32dccf4cd32e41dd9ba4a406f2bc466, type: 2}
+  - {fileID: 111880, guid: 90ebb61fbbe4d4521935849f7b9575a1, type: 2}
+  timeBetweenSpawnAttempts: 3
+  spawnChance: 50
+  spawnType: 0
+  boatIntegrityModifierInit: 15
   rating: {fileID: 0}
   levelMan: {fileID: 0}
 --- !u!4 &1075810263
@@ -974,12 +976,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1075810261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.3543115, z: 0}
+  m_LocalPosition: {x: -0.05, y: -2.2543116, z: 0}
   m_LocalScale: {x: 1.5961944, y: 2, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 554068207}
+  m_RootOrder: 0
 --- !u!82 &1075810264
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1302,7 +1304,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &1570590816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,7 +1406,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1847514082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1556,7 @@ Transform:
   m_Children:
   - {fileID: 178891284}
   m_Father: {fileID: 554068207}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &2045568635
 MonoBehaviour:
   m_ObjectHideFlags: 0

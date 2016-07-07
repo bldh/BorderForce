@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1")) {
 			if (borderForceCountdown <= 0) {
 				this.transform.parent.BroadcastMessage ("Reverse", true);
-				borderForceCountdown = 1000f / gameManager.GetComponent<Manager> ().opinion;
+				borderForceCountdown = 30f - (Manager.bPB * 10);
 				sendBorderForce = true;
 			}
 		}

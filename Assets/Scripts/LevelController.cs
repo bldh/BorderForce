@@ -3,10 +3,10 @@ using System.Collections;
 using System;
 
 public class LevelController : MonoBehaviour {
-	public GameObject boat1,boat2,boat3,boat4,boat5;
+	//public GameObject boat1,boat2,boat3,boat4,boat5;
 	public GameObject[] boat;
 
-	public float timeBetweenSpawnAttempts, mB, fAB, bPB;
+	public float timeBetweenSpawnAttempts;
 	public int spawnChance, spawnType, maxBoatLevel;
 	public float boatIntegrityModifierInit;
 	System.Random rand = new System.Random(); 
@@ -15,10 +15,6 @@ public class LevelController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lastSpawn = Time.timeSinceLevelLoad;
-		mB = PlayerPrefs.GetFloat ("militaryBudget");
-		fAB = PlayerPrefs.GetFloat ("foreignAidBudget");
-		bPB = PlayerPrefs.GetFloat ("borderPatrolBudget");
-		if(mB == 0) {mB = .33f;}
 	}
 
 	// Update is called once per frame

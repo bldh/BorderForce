@@ -10,6 +10,9 @@ public class levelManager : MonoBehaviour {
 
 	void Awake () {
 		currentLevel = PlayerPrefs.GetInt ("currentLevel");
+		if (currentLevel > 1) {
+			sliders.GetComponent<CanvasGroup> ().alpha = 1f;
+		}
 	}
 	
 	// Update is called once per frame
@@ -26,6 +29,7 @@ public class levelManager : MonoBehaviour {
 		Debug.Log ("Load Level " + currentLevel);
 		PlayerPrefs.SetInt ("currentLevel", currentLevel);
 		SceneManager.LoadScene("InterLevel");
+		sliders.GetComponent<Sliders> ().SaveData ();
 
 	}
 

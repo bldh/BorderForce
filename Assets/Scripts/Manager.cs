@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Manager : MonoBehaviour {
 
@@ -13,9 +14,19 @@ public class Manager : MonoBehaviour {
 	public int currentLevel;
 	public float opinion = 50;
 	public float levelTimer = 60;
+	public static float mB, fAB, bPB;
 	private int maxInDetention = 50;
 	private int maxDrownings = 50;
 	private int maxArrivals = 50;
+	public int paxModifier;
+
+	public GameObject[] boat;
+
+	public float timeBetweenSpawnAttempts;
+	public int spawnChance, spawnType;
+	public float boatIntegrityModifierInit;
+	System.Random rand = new System.Random(); 
+	private float lastSpawn;
 
 	public GameObject rating, levelMan;
 
@@ -25,13 +36,13 @@ public class Manager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		lastSpawn = Time.timeSinceLevelLoad;
 		opinion = 50;
 		levelTimer = 60;
 		levelMan = GameObject.Find("Manager");
 		currentLevel = PlayerPrefs.GetInt ("currentLevel");
-		if (currentLevel > 1) {
-			LoadData ();
-		}
+		LoadData ();
+		paxModifier = (int) (fAB * 5);
 	}
 	
 	// Update is called once per frame
@@ -58,6 +69,10 @@ public class Manager : MonoBehaviour {
 			gameOver ();
 		}
 
+		if (Time.timeSinceLevelLoad - lastSpawn > (timeBetweenSpawnAttempts)) {
+			TrySpawn ();
+		}
+
 		rating.GetComponent<Text> ().text = opinion.ToString();
 	}
 
@@ -68,6 +83,25 @@ public class Manager : MonoBehaviour {
 			opinion = 99;
 		}
 	}
+
+	void TrySpawn() {
+		print ("Trying Spawn");
+		int spawn = rand.Next (0, 100);
+		if (spawn < spawnChance) {
+			spawnType = rand.Next (0, boat.Length);
+			float integrity = rand.Next (1, 20);
+			float boatIntegrityModifier = boatIntegrityModifierInit + (integrity * (1 - mB));
+			float angleModifier = rand.Next (-15, 15);
+			int pax = (rand.Next (5, 10)) - paxModifier;
+			GameObject g = Instantiate (boat[spawnType], new Vector2 (rand.Next (-9, 9), 4), Quaternion.Euler (new Vector3 (0, 0, 0 + angleModifier))) as GameObject;
+			g.transform.name = "IEV";
+			g.transform.SetParent (this.transform);
+			g.GetComponent<BoatController>().setPassengers(pax);
+			g.GetComponent<BoatController>().integrity = boatIntegrityModifier;
+			lastSpawn = Time.timeSinceLevelLoad;
+		}	
+	}
+
 
 	public void incrDrowned(int num)
 	{
@@ -103,16 +137,21 @@ public class Manager : MonoBehaviour {
 	public void gameOver()
 	{
 		SaveData ();
-		Application.LoadLevel ("Aftermath");
+		SceneManager.LoadScene ("Aftermath");
 	}
 
 	public void LoadData() {
-		drownings = PlayerPrefs.GetInt ("drowned");
-		otherDrownings = PlayerPrefs.GetInt ("otherDrowned");
-		detainees = PlayerPrefs.GetInt ("detainees");
-		arrivals = PlayerPrefs.GetInt ("arrivals");
-		returns = PlayerPrefs.GetInt ("returns");
-		opinion = PlayerPrefs.GetFloat ("publicOpinion");
+		if (currentLevel > 1) {
+			drownings = PlayerPrefs.GetInt ("drowned");
+			otherDrownings = PlayerPrefs.GetInt ("otherDrowned");
+			detainees = PlayerPrefs.GetInt ("detainees");
+			arrivals = PlayerPrefs.GetInt ("arrivals");
+			returns = PlayerPrefs.GetInt ("returns");
+			opinion = PlayerPrefs.GetFloat ("publicOpinion");
+		}
+		mB = PlayerPrefs.GetFloat ("militaryBudget");
+		fAB = PlayerPrefs.GetFloat ("foreignAidBudget");
+		bPB = PlayerPrefs.GetFloat ("borderPatrolBudget");
 	}
 		
 	public void SaveData() {

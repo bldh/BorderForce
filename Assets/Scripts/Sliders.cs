@@ -44,9 +44,10 @@ public class Sliders : MonoBehaviour {
 	}
 
 	public void SaveData (){
+		Debug.Log ("saving to player prefs");
 		PlayerPrefs.SetFloat ("militaryBudget", mB);
 		PlayerPrefs.SetFloat ("foreignAidBudget", fAB);
-		PlayerPrefs.SetFloat ("borderPatrol", bPB);
+		PlayerPrefs.SetFloat ("borderPatrolBudget", bPB);
 	}
 
 	public void LoadData () {
