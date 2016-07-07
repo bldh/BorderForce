@@ -32,7 +32,7 @@ public class BoatController : MonoBehaviour {
 	void Update () {
 		integrity -= Time.deltaTime;
 		if (integrity <= 0) {
-			sinkBoat2 ();
+			sinkBoat ();
 		}
 
 		if (Input.GetMouseButton(0)) {
@@ -51,26 +51,15 @@ public class BoatController : MonoBehaviour {
 			Vector3 diff = goHome.transform.position - this.transform.position;
 			diff.Normalize ();
 			float rot_z = Mathf.Atan2 (diff.y, diff.x) * Mathf.Rad2Deg;
-
 			Vector3 currentRot = Vector3.Lerp(startRot, new Vector3(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, rot_z+90),time);
 			time += Mathf.Clamp (Time.deltaTime * .5f, 0, 1);
 			transform.rotation = Quaternion.Euler(currentRot); 
-
-		
 		}
 		this.GetComponent<Rigidbody2D>().velocity = (Vector2)transform.TransformDirection(Vector3.up) * vel;
 		drawBoatDamage ();	
 	}
 
 	void sinkBoat(){
-		//print (Time.timeSinceLevelLoad);
-		Vector3 spawnPoint = this.transform.position;
-		GameObject newRefugee = Instantiate (refugee, spawnPoint, Quaternion.Euler (new Vector3 (0, 0, 0))) as GameObject;
-		AudioSource.PlayClipAtPoint (breaking, this.transform.position,0.55f);
-		Destroy (this.gameObject);
-	}
-
-	void sinkBoat2(){
 		//print (Time.timeSinceLevelLoad);
 		Vector3 spawnPoint = this.transform.position;
 		for (int i = 0; i < passengers; i++){
@@ -106,6 +95,7 @@ public class BoatController : MonoBehaviour {
 	{
 		influenced = influence;
 	}
+
 	public void setPassengers(int num)
 	{
 		passengers = num;

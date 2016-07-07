@@ -26,6 +26,12 @@ public class Sliders : MonoBehaviour {
 		mB = militaryBudget.GetComponent<Slider> ().value;
 		fAB = foreignAidBudget.GetComponent<Slider> ().value;
 		bPB = borderPatrolBudget.GetComponent<Slider> ().value;
+		if (mB > 0.98) { mB = 0.98f; }
+		if (mB < 0.01) { mB = 0.01f; }
+		if (fAB > 0.98) { fAB = 0.98f; }
+		if (fAB < 0.01) { fAB = 0.01f; }
+		if (bPB > 0.98) { bPB = 0.98f; }
+		if (bPB < 0.01) { bPB = 0.01f; }
 
 		temp = mB + fAB + bPB;
 		mB = mB / temp;
