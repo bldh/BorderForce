@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (!Input.GetMouseButton(0)) {
 			if (Input.GetKey (KeyCode.W)){
-				transform.position = Vector2.MoveTowards (this.transform.position, Camera.main.ScreenToWorldPoint (Input.mousePosition), 1f * Time.deltaTime);
+				transform.position = Vector2.MoveTowards (this.transform.position, Camera.main.ScreenToWorldPoint (Input.mousePosition), (Manager.mB + .66f) * Time.deltaTime);
 				transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90); 
 			}
 			cone.transform.rotation = Quaternion.Euler(0f, 0f, rot_z - 90);

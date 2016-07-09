@@ -12,6 +12,7 @@ public class Sliders : MonoBehaviour {
 		militaryBudget = GameObject.Find ("Military");
 		foreignAidBudget = GameObject.Find ("Foreign Aid");
 		borderPatrolBudget = GameObject.Find ("Border Patrol");
+		LoadData ();
 //		mB = 0.33f;
 //		fAB = 0.33f;
 //		bPB = 0.33f;

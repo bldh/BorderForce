@@ -15,6 +15,7 @@ public class Manager : MonoBehaviour {
 	public float opinion = 50;
 	public float levelTimer = 60;
 	public static float mB, fAB, bPB;
+	public float mBud, fABud, bPBud;
 	private int maxInDetention = 50;
 	private int maxDrownings = 50;
 	private int maxArrivals = 50;
@@ -42,6 +43,9 @@ public class Manager : MonoBehaviour {
 		levelMan = GameObject.Find("Manager");
 		currentLevel = PlayerPrefs.GetInt ("currentLevel");
 		LoadData ();
+		bPBud = bPB;
+		mBud = mB;
+		fABud = fAB;
 		paxModifier = (int) (fAB * 5);
 	}
 	
